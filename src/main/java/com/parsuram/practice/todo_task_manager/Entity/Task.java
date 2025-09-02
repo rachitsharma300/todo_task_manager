@@ -1,106 +1,77 @@
 package com.parsuram.practice.todo_task_manager.Entity;
 
-import jakarta.persistence.*; // For JPA annotations
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * This is the Entity class (Model layer).
- * It directly maps to the Database table "tasks".
- * Each object of Task will represent one row in the database.
+ * Task entity mapped to tasks table.
  */
-@Entity                  // Marks this class as a JPA entity (table in DB)
-@Table(name = "tasks")   // Optional: specify custom table name
+@Entity
+@Table(name = "tasks")
 public class Task {
 
-    @Id  // Marks primary key
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // Auto-increment ID in database
     private Long id;
 
     @Column(nullable = false)
-    // Cannot be NULL in DB
     private String title;
 
     private String description;
 
+    // normalized as a boolean completed flag
     @Column(nullable = false)
-    private String status; // Example: "Pending", "In Progress", "Completed"
+    private boolean completed = false;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    // ---------------- Constructors ----------------
+    public Task() { }
 
-    public Task() {
-        // Default constructor (needed by JPA)
-    }
-
-    public Task(String title, String description, String status) {
+    public Task(String title, String description, boolean completed) {
         this.title = title;
         this.description = description;
-        this.status = status;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
+        this.completed = completed;
     }
 
-    // ---------------- Getters and Setters ----------------
+    // --- Getters & Setters ---
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Long getId() {
-        return id;
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public boolean isCompleted() { return completed; }
+    public void setCompleted(boolean completed) { this.completed = completed; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
+
+    // Auto populate timestamps
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = createdAt;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    // ---------------- toString() for debugging ----------------
     @Override
     public String toString() {
         return "Task{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", status='" + status + '\'' +
+                ", completed=" + completed +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
