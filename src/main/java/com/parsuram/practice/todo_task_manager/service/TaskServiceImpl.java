@@ -7,17 +7,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * TaskServiceImpl is the implementation of TaskService interface.
- * It contains the actual business logic and interacts with the database
- * through TaskRepository.
- */
 @Service
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
 
-    // Constructor-based Dependency Injection
+    // Constructor injection
     public TaskServiceImpl(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
@@ -40,8 +35,9 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task updateTask(Long id, Task taskDetails) {
         return taskRepository.findById(id).map(task -> {
-            task.setTitle(taskDetails.getTitle());
-            task.setDescription(taskDetails.getDescription());
+            if (taskDetails.getTitle() != null) task.setTitle(taskDetails.getTitle());
+            if (taskDetails.getDescription() != null) task.setDescription(taskDetails.getDescription());
+            // Update completed flag
             task.setCompleted(taskDetails.isCompleted());
             return taskRepository.save(task);
         }).orElseThrow(() -> new RuntimeException("Task not found with id " + id));
