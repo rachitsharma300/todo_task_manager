@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        a.button {
+            padding: 6px 12px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a.button:hover {
+            background: #0056b3;
+        }
+        .actions a {
+            margin: 0 4px;
+        }
+        .top-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .top-bar a {
+            padding: 10px 15px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .top-bar a:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+<h1>Task Manager</h1>
+
+<div class="top-bar">
+    <a href="/view/tasks/new">➕ Add New Task</a>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Completed</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop over tasks -->
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.id}"></td>
+        <td th:text="${task.title}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.completed ? 'Yes' : 'No'}"></td>
+        <td th:text="${task.createdAt}"></td>
+        <td th:text="${task.updatedAt}"></td>
+        <td class="actions">
+            <a class="button" th:href="@{'/view/tasks/edit/' + ${task.id}}">✏️ Edit</a>
+            <a class="button" th:href="@{'/view/tasks/delete/' + ${task.id}}">🗑 Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
