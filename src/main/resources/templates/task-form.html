@@ -4,78 +4,50 @@
     <meta charset="UTF-8">
     <title th:text="${task.id != null} ? 'Edit Task' : 'Create Task'">Task Form</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background: #f5f5f5;
-        }
-        h1 {
-            text-align: center;
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        h1 { text-align: center; }
         form {
-            width: 400px;
-            margin: auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 6px;
-            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            width: 400px; margin: auto; padding: 20px; background: #fff;
+            border-radius: 6px; box-shadow: 0 0 8px rgba(0,0,0,0.1);
         }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
+        label { display: block; margin-top: 10px; font-weight: bold; }
         input, textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 4px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            width: 100%; padding: 8px; margin-top: 4px;
+            border: 1px solid #ccc; border-radius: 4px;
         }
+        textarea { resize: vertical; min-height: 80px; }
+        .checkbox-label { margin-top: 10px; display: flex; align-items: center; gap: 8px; }
         button {
-            margin-top: 15px;
-            padding: 10px 15px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+            margin-top: 15px; padding: 10px 15px; background: #007bff; color: white;
+            border: none; border-radius: 4px; cursor: pointer; width: 100%;
         }
-        button:hover {
-            background: #0056b3;
-        }
-        .back {
-            display: block;
-            text-align: center;
-            margin-top: 10px;
-        }
-        .back a {
-            text-decoration: none;
-            color: #555;
-        }
-        .back a:hover {
-            color: black;
-        }
+        button:hover { background: #0056b3; }
+        .back { text-align: center; margin-top: 15px; }
+        .back a { text-decoration: none; color: #555; }
+        .back a:hover { color: black; }
     </style>
 </head>
 <body>
 <h1 th:text="${task.id != null} ? 'Edit Task' : 'Create Task'"></h1>
 
-<form th:action="${task.id != null} ? @{'/view/tasks/update/' + ${task.id}} : @{/view/tasks}" method="post" th:object="${task}">
+<form th:action="${task.id != null} ? @{'/view/tasks/update/' + ${task.id}} : @{/view/tasks}"
+      method="post" th:object="${task}">
+
     <label for="title">Title</label>
     <input type="text" id="title" th:field="*{title}" required>
 
     <label for="description">Description</label>
     <textarea id="description" th:field="*{description}"></textarea>
 
-    <label>
+    <label class="checkbox-label">
         <input type="checkbox" th:field="*{completed}"> Completed
     </label>
 
-    <button type="submit" th:text="${task.id != null} ? 'Update' : 'Create'"></button>
+    <button type="submit" th:text="${task.id != null} ? 'Update Task' : 'Create Task'"></button>
 </form>
 
 <div class="back">
-    <a href="/view/tasks">⬅ Back to Task List</a>
+    <a th:href="@{/view/tasks}">⬅ Back to Task List</a>
 </div>
 </body>
 </html>
