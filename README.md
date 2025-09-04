@@ -62,6 +62,6 @@ src/main/resources
  ├── templates       # Thymeleaf templates
  └── application.properties
 ```
-
-
-
+<h2>Author</h2>
+<p><b>Rachit Sharma</b></p>
+<link>rachitsharma300@gmail.com</link>
