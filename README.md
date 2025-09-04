@@ -26,5 +26,9 @@
 git clone https://github.com/rachitsharma300/todo_task_manager.git
 cd todo-task-manager
 ```
+<h2><b>Configure MySQL</b></h2>
+<p>Create a database</p>
 
-
+```
+CREATE DATABASE todo_db;
+```
