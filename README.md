@@ -17,3 +17,14 @@
 <li><b>Frontend</b> Thymeleaf + HTML + CSS</li>
 <li><b>Database</b> MYSQL</li>
 <li><b>Build Tool</b> Maven</li>
+<br>
+
+<h2>Setup Instructions</h2>
+<p><b>1. Clone the repository</b></p>
+
+```bash
+git clone https://github.com/rachitsharma300/todo_task_manager.git
+cd todo-task-manager
+```
+
+
