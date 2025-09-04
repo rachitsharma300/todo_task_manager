@@ -13,4 +13,7 @@
 <br>
 
 <h2>Tech Stack</h2>
-<li><b>Backend</b> Spring Boot (MVC, JPA, Hibernate</li>
+<li><b>Backend</b> Spring Boot (MVC, JPA, Hibernate)</li>
+<li><b>Frontend</b> Thymeleaf + HTML + CSS</li>
+<li><b>Database</b> MYSQL</li>
+<li><b>Build Tool</b> Maven</li>
