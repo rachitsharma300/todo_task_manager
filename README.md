@@ -32,3 +32,4 @@ cd todo-task-manager
 ```
 CREATE DATABASE todo_db;
 ```
+<p>Update application.properties with your DB credentials.</p>
