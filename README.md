@@ -4,4 +4,7 @@
   This project demostrates <b>CRUD Operations,</b> MVC architecture and integration with a <b>MYSQL database.</b>
 </p>
 
+<h2>Features</h2>
+<li>Add New Tasks</li>
+
 
