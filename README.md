@@ -41,5 +41,27 @@ mvn spring-boot:run
 ```
 
 <h2>Access the app</h2>
-<p><b>Task List</b>http://localhost:8080/view/tasks</p>
-<p><b>Add Task</b>http://localhost:8080/view/tasks/new</p>
+
+```
+Task List → http://localhost:8080/view/tasks
+Add Task → http://localhost:8080/view/tasks/new
+```
+
+<h2>Project Structure</h2>
+
+```
+src/main/java/com/example/todo
+ ├── controller      # Handles HTTP requests
+ ├── model           # Task entity
+ ├── repository      # JPA repository
+ ├── service         # Business logic
+ └── TodoApplication.java
+
+src/main/resources
+ ├── static/css      # Stylesheets
+ ├── templates       # Thymeleaf templates
+ └── application.properties
+```
+
+
+
