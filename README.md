@@ -6,5 +6,8 @@
 
 <h2>Features</h2>
 <li>Add New Tasks</li>
-
+<li>View All Tasks</li>
+<li>Update Existing Tasks</li>
+<li>Delete Tasks</li>
+<li>Simple And Responsive UI</li>
 
