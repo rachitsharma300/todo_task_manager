@@ -10,4 +10,7 @@
 <li>Update Existing Tasks</li>
 <li>Delete Tasks</li>
 <li>Simple And Responsive UI</li>
+<br>
 
+<h2>Tech Stack</h2>
+<li><b>Backend</b> Spring Boot (MVC, JPA, Hibernate</li>
