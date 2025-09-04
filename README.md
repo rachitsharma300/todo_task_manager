@@ -19,17 +19,23 @@
 <li><b>Build Tool</b> Maven</li>
 <br>
 
-<h2>Setup Instructions</h2>
-<p><b>1. Clone the repository</b></p>
+<h2>1. Setup Instructions</h2>
+<p><b>Clone the repository</b></p>
 
 ```bash
 git clone https://github.com/rachitsharma300/todo_task_manager.git
 cd todo-task-manager
 ```
-<h2><b>Configure MySQL</b></h2>
+<h2><b>2. Configure MySQL</b></h2>
 <p>Create a database</p>
 
 ```
 CREATE DATABASE todo_db;
 ```
 <p>Update application.properties with your DB credentials.</p>
+
+<h2>3. Run the application</h2>
+```
+mvn spring-boot:run
+````
+
