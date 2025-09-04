@@ -35,7 +35,11 @@ CREATE DATABASE todo_db;
 <p>Update application.properties with your DB credentials.</p>
 
 <h2>3. Run the application</h2>
+
 ```
 mvn spring-boot:run
-````
+```
 
+<h2>Access the app</h2>
+<p><b>Task List</b>http://localhost:8080/view/tasks</p>
+<p><b>Add Task</b>http://localhost:8080/view/tasks/new</p>
